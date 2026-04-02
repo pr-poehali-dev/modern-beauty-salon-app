@@ -3,13 +3,22 @@ import Icon from "@/components/ui/icon";
 import { masters } from "@/data/masters";
 
 const services = [
-  { id: 1, name: "Стрижка женская", price: 1800, duration: 60, category: "Волосы" },
-  { id: 2, name: "Окрашивание", price: 4500, duration: 120, category: "Волосы" },
-  { id: 3, name: "Укладка", price: 1200, duration: 45, category: "Волосы" },
-  { id: 4, name: "Маникюр + покрытие", price: 2200, duration: 90, category: "Ногти" },
-  { id: 5, name: "Педикюр", price: 2500, duration: 90, category: "Ногти" },
-  { id: 6, name: "Макияж дневной", price: 2000, duration: 60, category: "Макияж" },
+  { id: 1, name: "Стрижка женская", price: 1800, duration: 60, category: "Женские" },
+  { id: 2, name: "Окрашивание", price: 4500, duration: 120, category: "Женские" },
+  { id: 3, name: "Укладка", price: 1200, duration: 45, category: "Женские" },
+  { id: 4, name: "Маникюр + покрытие", price: 2200, duration: 90, category: "Женские" },
+  { id: 5, name: "Педикюр", price: 2500, duration: 90, category: "Женские" },
+  { id: 6, name: "Макияж дневной", price: 2000, duration: 60, category: "Женские" },
+  { id: 7, name: "Стрижка мужская", price: 900, duration: 40, category: "Мужские" },
+  { id: 8, name: "Стрижка + борода", price: 1300, duration: 60, category: "Мужские" },
+  { id: 9, name: "Моделирование бороды", price: 600, duration: 30, category: "Мужские" },
+  { id: 10, name: "Укладка мужская", price: 700, duration: 30, category: "Мужские" },
+  { id: 11, name: "Стрижка детская (до 12 лет)", price: 600, duration: 30, category: "Детские" },
+  { id: 12, name: "Стрижка подростковая", price: 800, duration: 35, category: "Детские" },
+  { id: 13, name: "Укладка детская", price: 500, duration: 25, category: "Детские" },
 ];
+
+const serviceCategories = ["Все", "Женские", "Мужские", "Детские"];
 
 const timeSlots = ["10:00", "10:30", "11:00", "11:30", "12:00", "13:30", "14:00", "15:30", "16:00", "17:00"];
 
@@ -39,6 +48,7 @@ const BookingScreen = ({ onMasterClick }: BookingScreenProps) => {
   const [forSelf, setForSelf] = useState(true);
   const [selectedMember, setSelectedMember] = useState<number | null>(null);
   const [confirmed, setConfirmed] = useState(false);
+  const [serviceCategory, setServiceCategory] = useState("Все");
 
   if (confirmed) {
     return (
@@ -152,8 +162,19 @@ const BookingScreen = ({ onMasterClick }: BookingScreenProps) => {
       {/* Услуга */}
       <div>
         <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">Выберите услугу</h3>
-        <div className="space-y-2">
-          {services.map((s) => (
+        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+          {serviceCategories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => { setServiceCategory(cat); setSelectedService(null); }}
+              className={`flex-shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all border ${serviceCategory === cat ? "orange-gradient text-white border-transparent shadow-sm" : "bg-white border-border text-muted-foreground"}`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+        <div className="space-y-2 mt-2">
+          {services.filter(s => serviceCategory === "Все" || s.category === serviceCategory).map((s) => (
             <button
               key={s.id}
               onClick={() => setSelectedService(s.id)}
