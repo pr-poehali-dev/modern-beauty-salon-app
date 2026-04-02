@@ -42,7 +42,7 @@ const LoyaltyScreen = () => {
             <div>
               <p className="text-white/70 text-xs font-medium uppercase tracking-wider mb-0.5">Баланс баллов</p>
               <div className="flex items-end gap-1">
-                <span className="text-5xl font-black leading-none">{BALANCE.toLocaleString()}</span>
+                <span className="text-5xl font-bold leading-none">{BALANCE.toLocaleString()}</span>
                 <span className="text-white/70 text-base font-medium mb-1">Б</span>
               </div>
             </div>
@@ -73,7 +73,7 @@ const LoyaltyScreen = () => {
         <div className="flex items-center justify-between mb-3">
           <div>
             <p className="text-xs text-muted-foreground font-medium">Ваш уровень</p>
-            <p className="font-black text-lg text-foreground">{currentLevel.name}</p>
+            <p className="font-bold text-lg text-foreground">{currentLevel.name}</p>
           </div>
           <div className="text-right">
             <p className="text-xs text-muted-foreground">Скидки</p>
@@ -126,11 +126,11 @@ const LoyaltyScreen = () => {
                 <div className="flex gap-3 text-right">
                   <div>
                     <p className="text-[10px] text-muted-foreground">Услуги</p>
-                    <p className={`text-sm font-black ${isCurrent ? "text-orange-500" : "text-foreground"}`}>{level.serviceDiscount}%</p>
+                    <p className={`text-sm font-semibold ${isCurrent ? "text-orange-500" : "text-foreground"}`}>{level.serviceDiscount}%</p>
                   </div>
                   <div>
                     <p className="text-[10px] text-muted-foreground">Косметика</p>
-                    <p className={`text-sm font-black ${isCurrent ? "text-orange-500" : "text-foreground"}`}>{level.cosmeticDiscount}%</p>
+                    <p className={`text-sm font-semibold ${isCurrent ? "text-orange-500" : "text-foreground"}`}>{level.cosmeticDiscount}%</p>
                   </div>
                 </div>
               </div>
@@ -153,7 +153,7 @@ const LoyaltyScreen = () => {
               </div>
               <div>
                 <p className="text-[10px] text-muted-foreground leading-tight">{b.action}</p>
-                <p className="text-xs font-black text-orange-500">{b.points} Б</p>
+                <p className="text-xs font-semibold text-orange-500">{b.points} Б</p>
               </div>
             </div>
           ))}

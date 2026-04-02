@@ -35,7 +35,7 @@ const LoginScreen = ({ onLogin }: LoginScreenProps) => {
             <div className="w-20 h-20 orange-gradient rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               <span className="text-white text-3xl font-black">М</span>
             </div>
-            <h1 className="text-4xl font-black text-white mb-1 tracking-tight">Модерн</h1>
+            <h1 className="text-4xl font-bold text-white mb-1 tracking-tight">Модерн</h1>
             <p className="text-white/80 text-base font-medium">семейный салон красоты</p>
           </div>
         </div>
@@ -44,7 +44,7 @@ const LoginScreen = ({ onLogin }: LoginScreenProps) => {
           <div className="bg-white rounded-3xl p-6 card-shadow">
             {step === "phone" ? (
               <>
-                <h2 className="text-xl font-bold text-foreground mb-1">Войти в аккаунт</h2>
+                <h2 className="text-xl font-semibold text-foreground mb-1">Войти в аккаунт</h2>
                 <p className="text-sm text-muted-foreground mb-5">Введите номер телефона — отправим SMS с кодом</p>
 
                 <div className="relative mb-4">

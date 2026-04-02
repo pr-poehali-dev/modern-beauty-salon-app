@@ -8,7 +8,11 @@ const familyMembers = [
 
 const masters = ["Анна Соколова", "Мария Белова", "Ольга Петрова"];
 
-const ProfileScreen = () => {
+interface ProfileScreenProps {
+  onMasterClick: (id: number) => void;
+}
+
+const ProfileScreen = ({ onMasterClick: _onMasterClick }: ProfileScreenProps) => {
   const [activeTab, setActiveTab] = useState<"profile" | "family">("profile");
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState("Мария Иванова");

@@ -3,6 +3,7 @@ import Icon from "@/components/ui/icon";
 
 interface HistoryScreenProps {
   onGoToLoyalty: () => void;
+  onCatalogOpen: () => void;
 }
 
 const visits = [
@@ -61,7 +62,7 @@ const visits = [
   },
 ];
 
-const HistoryScreen = ({ onGoToLoyalty }: HistoryScreenProps) => {
+const HistoryScreen = ({ onGoToLoyalty, onCatalogOpen }: HistoryScreenProps) => {
   const [reviewOpen, setReviewOpen] = useState<number | null>(null);
   const [rating, setRating] = useState(5);
   const [reviewText, setReviewText] = useState("");
@@ -77,7 +78,7 @@ const HistoryScreen = ({ onGoToLoyalty }: HistoryScreenProps) => {
   return (
     <div className="px-4 py-4 space-y-4 animate-fade-in">
       <div className="flex items-center justify-between">
-        <h2 className="font-black text-lg text-foreground">Мои визиты</h2>
+        <h2 className="font-bold text-lg text-foreground">Мои визиты</h2>
         <button
           onClick={onGoToLoyalty}
           className="flex items-center gap-1.5 bg-orange-50 border border-orange-200 px-3 py-1.5 rounded-xl text-orange-600 text-xs font-semibold active:scale-95 transition-all"
@@ -110,10 +111,10 @@ const HistoryScreen = ({ onGoToLoyalty }: HistoryScreenProps) => {
                     <Icon name="User" size={13} className="text-muted-foreground" />
                     <span className="text-xs text-muted-foreground font-medium">{visit.client}</span>
                   </div>
-                  <p className="font-bold text-base text-foreground">{visit.service}</p>
+                  <p className="font-semibold text-base text-foreground">{visit.service}</p>
                   <p className="text-xs text-muted-foreground mt-0.5">{visit.date} · {visit.time} · {visit.master}</p>
                 </div>
-                <span className="font-black text-lg text-orange-500">{visit.price.toLocaleString()} ₽</span>
+                <span className="font-bold text-base text-orange-500">{visit.price.toLocaleString()} ₽</span>
               </div>
 
               {/* Баллы */}
@@ -191,13 +192,13 @@ const HistoryScreen = ({ onGoToLoyalty }: HistoryScreenProps) => {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-semibold text-foreground">{visit.recommendation.name}</p>
-                      <p className="text-orange-500 font-black text-sm">{visit.recommendation.price.toLocaleString()} ₽</p>
+                      <p className="text-orange-500 font-bold text-sm">{visit.recommendation.price.toLocaleString()} ₽</p>
                     </div>
                     <div className="flex gap-1.5">
-                      <button className="py-2 px-3 rounded-xl bg-muted/50 text-xs font-medium text-foreground active:scale-95 transition-all">
+                      <button onClick={onCatalogOpen} className="py-2 px-3 rounded-xl bg-muted/50 text-xs font-medium text-foreground active:scale-95 transition-all">
                         Каталог
                       </button>
-                      <button className="py-2 px-3 rounded-xl orange-gradient text-white text-xs font-bold active:scale-95 transition-all">
+                      <button className="py-2 px-3 rounded-xl orange-gradient text-white text-xs font-medium active:scale-95 transition-all">
                         Забронировать
                       </button>
                     </div>
